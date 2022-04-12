@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  mssql-server:
+    container_name: sql_server
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Youtube2021"
+      MSSQL_PID: Express
+    ports:
+      - "1433:1433"
+  rabbitmq:
+    container_name: rabbitmq
+    image: 'rabbitmq:3.9-management'
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+      RABBITMQ_DEFAULT_VHOST: vhost
+  loja-veiculos:
+    container_name: app
+    build: 
+      context: .
+      args:
+        buildnbinfo: 1
+    environment:
+      DbServer: "mssql-server"
+      DbPort: "1433"
+      DbUser: "SA"
+      Password: "Youtube2021"
+      Database: "LojaDB"
+    depends_on:
+      - rabbitmq
+      - mssql-server
+    ports: 
+      - "8090:80"
+
+

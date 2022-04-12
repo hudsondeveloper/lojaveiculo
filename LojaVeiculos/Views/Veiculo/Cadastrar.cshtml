@@ -1,0 +1,82 @@
+﻿@model LojaVeiculos.Models.Veiculo
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Form</title>
+</head>
+
+<body>
+    <div class="myform">
+        <h1 class="display-4">Cadastrar Veiculo</h1>
+
+        <form asp-controller="Veiculo" asp-action="Cadastrar" method="post">
+            <div class="">
+                <label asp-for="ProprietarioID" class="">Proprietario:</label>
+                <select asp-for="ProprietarioID" asp-items="ViewBag.Proprietarios" required></select>
+            </div>
+            <br>
+            <div class="">
+                <label asp-for="Renavam" class="">Renavam:</label>
+                <input asp-for="Renavam" placeholder="Renavam" name="Renavam" required type="number" />
+            </div>
+            <br>
+            <div class="">
+                <label asp-for="MarcaID" class="">Marca:</label>
+                <select asp-for="MarcaID" asp-items="ViewBag.Marca" required></select>
+            </div>
+            <br>
+            <div class="">
+                <label asp-for="StatusVeiculo" class="">Status do Veiculo:</label>
+                <select asp-for="StatusVeiculo" asp-items="ViewBag.StatusVeiculo" required></select>
+            </div>
+            <br>
+            <div class="">
+                <label asp-for="Modelo" class="">Modelo:</label>
+                <input asp-for="Modelo" placeholder="Modelo" name="Modelo" required />
+            </div>
+            <br>
+            <div class="">
+                <label asp-for="Anofabricacao" class="">Ano de fabricação:</label>
+                <input asp-for="Anofabricacao" placeholder="Anofabricacao" name="Anofabricacao" required
+                    type="number" />
+            </div>
+            <br>
+            <div class="">
+                <label asp-for="AnoModelo" class="">Ano de modelo:</label>
+                <input asp-for="AnoModelo" placeholder="AnoModelo" name="AnoModelo" required type="number" />
+            </div>
+            <br>
+            <div class="">
+                <label asp-for="Quilometragem" class="">Quilometragem:</label>
+                <input asp-for="Quilometragem" placeholder="Quilometragem" name="Quilometragem" required />
+            </div>
+            <br>
+            <div class="">
+                <label asp-for="Valor" class="">Valor:</label>
+                <input asp-for="Valor" placeholder="Valor" name="Valor" required />
+            </div>
+            <div>
+                <p></p>
+                <button type="submit">Cadastrar</button>
+                <p></p>
+            </div>
+
+        </form>
+    </div>
+    <div id="ts-example">
+    </div>
+</body>
+
+</html>
+
+<script>
+    if ("@ViewBag.Validation") {
+        alert("@ViewBag.Validation")
+    }
+</script>

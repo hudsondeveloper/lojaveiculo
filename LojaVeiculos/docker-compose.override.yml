@@ -1,0 +1,6 @@
+version: '3.8'
+
+services:
+   loja-veiculos:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production 

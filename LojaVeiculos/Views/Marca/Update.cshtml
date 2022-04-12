@@ -1,0 +1,46 @@
+﻿@model LojaVeiculos.Models.Marca
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Form</title>
+</head>
+
+<body>
+    <div class="myform">
+        <h1 class="display-4">Atualizar Marca</h1>
+
+        <form asp-controller="Marca" asp-action="Update" method="post">
+            <input asp-for="Id" name="Id" value="@Model.Id" type="hidden" />
+            <div class="">
+                <label asp-for="Nome" class="">Nome:</label>
+                <input asp-for="Nome" placeholder="Nome" name="Nome" value="@Model.Nome" readonly />
+            </div>
+            <br>
+            <div class="">
+                <label asp-for="Status" class="">Status:</label>
+                <select asp-for="Status" asp-items="ViewBag.StatusMarca"></select>
+            </div>
+            <div>
+                <p></p>
+                <button type="submit">Atualizar</button>
+                <p></p>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    if ("@ViewBag.Validation") {
+        alert("@ViewBag.Validation")
+    }
+</script>

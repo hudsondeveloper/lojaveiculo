@@ -1,0 +1,16 @@
+﻿@model List<LojaVeiculos.Models.Proprietario>
+@{
+    Layout = "_Layout";
+}
+<h1>Proprietário</h1>
+<a class="" asp-area="" asp-controller="Proprietario" asp-action="Cadastrar">Cadastrar</a>
+
+<ul>
+    @foreach (var proprietario in Model)
+    {
+        <li>@proprietario.Nome | @proprietario.Documento | @proprietario.Email | @proprietario.Status |
+            @proprietario.Endereco <a class="" asp-area="" asp-controller="Proprietario" asp-action="Update"
+            asp-route-id="@proprietario.Id">Atualizar</a>
+        </li>
+    }
+</ul>

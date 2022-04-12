@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  console:
+    container_name: console
+    build:
+      context: .
+    network_mode: host

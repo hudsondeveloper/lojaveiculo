@@ -1,0 +1,17 @@
+﻿@model List<LojaVeiculos.Models.Veiculo>
+@{
+    Layout = "_Layout";
+}
+<h1>Veiculo</h1>
+<a class="" asp-area="" asp-controller="Veiculo" asp-action="Cadastrar">Cadastrar</a>
+
+<ul>
+    @foreach (var veiculo in Model)
+    {
+        <li>
+            @veiculo.Proprietario.Nome | @veiculo.StatusVeiculo | @veiculo.Renavam | @veiculo.Marca.Nome | @veiculo.Modelo |
+            @veiculo.Valor | @veiculo.Quilometragem | @veiculo.AnoModelo | @veiculo.Anofabricacao
+            <a class="" asp-area="" asp-controller="Veiculo" asp-action="Update" asp-route-id="@veiculo.Id">Atualizar</a>
+        </li>
+    }
+</ul>

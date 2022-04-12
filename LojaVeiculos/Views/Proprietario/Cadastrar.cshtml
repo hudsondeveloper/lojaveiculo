@@ -1,0 +1,70 @@
+﻿@model LojaVeiculos.Models.Proprietario
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Form</title>
+</head>
+
+<body>
+    <div class="myform">
+        <h1 class="display-4">Cadastrar Proprietario</h1>
+
+        <form asp-controller="Proprietario" asp-action="Cadastrar" method="post">
+            <div class="">
+                <label asp-for="Nome" class="">Nome:</label>
+                <input asp-for="Nome" placeholder="Nome" name="Nome" required />
+            </div>
+            <br>
+            <div class="">
+                <label asp-for="Documento" class="">Documento:</label>
+                <input asp-for="Documento" placeholder="Documento" name="Documento" required
+                    onblur="formata_cpf_cnpj(this.value)" />
+            </div>
+            <br>
+            <div class="">
+                <label asp-for="Email" class="">Email:</label>
+                <input asp-for="Email" placeholder="Email" name="Email" required
+                    onblur="validateEmail(this.value) == false?alert('Email Inválido'):true" />
+            </div>
+            <br>
+            <div class="">
+                <label asp-for="Cep" class="">Cep:</label>
+                <input asp-for="Cep" placeholder="Cep" name="Cep" required onblur="getCep(this.value)" />
+            </div>
+            <br>
+            <div class="">
+                <label asp-for="Endereco" class="">Endereço:</label>
+                <input asp-for="Endereco" placeholder="Endereço" name="Endereco" id="Endereco" required readonly
+                    style="width: 80%;" />
+            </div>
+            <br>
+            <div class="">
+                <label asp-for="Status" class="">Status:</label>
+                <select asp-for="Status" asp-items="ViewBag.StatusProprietario" required></select>
+            </div>
+
+            <div>
+                <p></p>
+                <button type="submit">Cadastrar</button>
+                <p></p>
+            </div>
+
+        </form>
+    </div>
+    <div id="ts-example">
+    </div>
+</body>
+
+</html>
+
+<script>
+    if ("@ViewBag.Validation") {
+        alert("@ViewBag.Validation")
+    }
+</script>

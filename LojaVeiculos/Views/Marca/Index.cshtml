@@ -1,0 +1,16 @@
+﻿@model List<LojaVeiculos.Models.Marca>
+@{
+    Layout = "_Layout";
+}
+<h1>Marca</h1>
+<a class="" asp-area="" asp-controller="Marca" asp-action="Cadastrar">Cadastrar</a>
+
+<ul>
+@foreach (var marca in Model)
+{
+                <li>@marca.Nome | @marca.Status  <a class="" asp-area="" asp-controller="Marca" asp-action="Update" asp-route-id="@marca.Id">Atualizar</a></li>
+    
+}
+</ul>
+
+
